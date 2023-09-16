@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/QuanLyPhieuMuon"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Quản lý Phiếu Mượn" />
+    <item
+        android:id="@+id/QuanLyLoaiSach"
+        android:icon="@drawable/baseline_library_books_24"
+        android:title="Quản lý loại sách" />
+    <item
+        android:id="@+id/QuanLySach"
+        android:icon="@drawable/baseline_menu_book_24"
+        android:title="Quản lý sách" />
+    <item
+        android:id="@+id/QuanLyThanhVien"
+        android:icon="@drawable/baseline_group_24"
+        android:title="Quản lý Thành Viên" />
+    <group android:checkableBehavior="single">
+        <item android:title="Thống kê">
+            <menu>
+                <item
+                    android:id="@+id/top10SachMuonNhieuNhat"
+                    android:icon="@drawable/baseline_vertical_align_top_24"
+                    android:title="Top 10 sách mượn nhiều nhất" />
+                <item
+                    android:id="@+id/DoanhThu"
+                    android:icon="@drawable/baseline_attach_money_24"
+                    android:title="Doanh Thu" />
+            </menu>
+        </item>
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:title="Người dùng">
+            <menu>
+                <item
+                    android:id="@+id/ThemNguoiDung"
+                    android:icon="@drawable/baseline_person_add_24"
+                    android:title="Thêm người dùng" />
+                <item
+                    android:id="@+id/DoiMk"
+                    android:icon="@drawable/baseline_key_24"
+                    android:title="Đổi mật khẩu" />
+                <item
+                    android:id="@+id/DangXuat"
+                    android:icon="@drawable/baseline_logout_24"
+                    android:title="Đăng xuất" />
+            </menu>
+        </item>
+    </group>
+</menu>
