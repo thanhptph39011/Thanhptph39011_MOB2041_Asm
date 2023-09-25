@@ -16,19 +16,33 @@ public class DbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //bảng thủ thư
-        String createTableThuThu = "create table ThuThu(maTT text primary key,hoTen text not null,matKhau text not null)";
+        String createTableThuThu = "create table ThuThu(maTT text primary key," +
+                "hoTen text not null," +
+                "matKhau text not null)";
         db.execSQL(createTableThuThu);
         //bảng thành viên
-        String createTableThanhVien = "create table ThanhVien(maTV integer primary key autoincrement,hoTen text not null, namSinh text not null)";
+        String createTableThanhVien = "create table ThanhVien(maTV integer primary key autoincrement," +
+                "hoTen text not null," +
+                " namSinh text not null)";
         db.execSQL(createTableThanhVien);
         //bảng loại sách
-        String createTableLoaiSach = "create table LoaiSach(maLoai integer primary key autoincrement, tenLoai text not null)";
+        String createTableLoaiSach = "create table LoaiSach(maLoai integer primary key autoincrement," +
+                " tenLoai text not null)";
         db.execSQL(createTableLoaiSach);
         //bảng sách
-        String createTableSach = "create table Sach(maSach integer primary key autoincrement, tenSach text not null, giaThue integer not null, maLoai integer references LoaiSach(maLoai))";
+        String createTableSach = "create table Sach(maSach integer primary key autoincrement, " +
+                "tenSach text not null, " +
+                "giaThue integer not null," +
+                " maLoai integer references LoaiSach(maLoai))";
         db.execSQL(createTableSach);
         //Bảng phiếu mượn
-        String createTablePhieuMuon = "create table PhieuMuon(maPM integer primary key autoincrement,maTT text references ThuThu(maTT),maTV integer references ThanhVien(maTV),maSach integer references Sach(maSach),tienThue integer not null,ngay date not null,traSach integer not null)";
+        String createTablePhieuMuon = "create table PhieuMuon(maPM integer primary key autoincrement," +
+                "maTT text references ThuThu(maTT)," +
+                "maTV integer references ThanhVien(maTV)," +
+                "maSach integer references Sach(maSach)," +
+                "tienThue integer not null," +
+                "ngay date not null," +
+                "traSach integer not null)";
         db.execSQL(createTablePhieuMuon);
     }
 

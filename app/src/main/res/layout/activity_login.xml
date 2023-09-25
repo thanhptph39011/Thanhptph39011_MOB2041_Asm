@@ -18,6 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         app:hintEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -36,7 +38,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         app:passwordToggleEnabled="true"
-        app:hintEnabled="true">
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:hintEnabled="false">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edtPassword"
@@ -52,7 +56,7 @@
         android:id="@+id/chkLuuMatKhau"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:text="Lưu mật khẩu" />
 

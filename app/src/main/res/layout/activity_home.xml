@@ -23,10 +23,11 @@ android:id="@+id/drawerLayout"
                 android:background="#25B0EF"
                 android:minHeight="?attr/actionBarSize" />
         </com.google.android.material.appbar.AppBarLayout>
+
         <FrameLayout
             android:id="@+id/frmnav"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
     </LinearLayout>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav"

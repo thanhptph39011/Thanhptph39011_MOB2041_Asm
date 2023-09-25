@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context=".Fragments.Top10Fragment">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rycLoaiSach"
+        android:id="@+id/rycTop10"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:listitem="@layout/item_top10"/>

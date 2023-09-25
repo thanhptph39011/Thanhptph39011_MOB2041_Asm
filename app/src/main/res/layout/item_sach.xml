@@ -5,7 +5,7 @@
     android:orientation="horizontal">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
@@ -82,7 +82,7 @@
         android:id="@+id/btnDelete_Sach"
         android:layout_width="28dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="260dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="30dp"
         android:background="#00BCD4"
         android:drawableStart="@drawable/baseline_delete_24" />
