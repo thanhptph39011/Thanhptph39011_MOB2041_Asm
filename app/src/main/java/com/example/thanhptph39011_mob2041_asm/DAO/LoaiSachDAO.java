@@ -11,6 +11,7 @@ import com.example.thanhptph39011_mob2041_asm.Model.LoaiSach;
 import com.example.thanhptph39011_mob2041_asm.Model.ThanhVien;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LoaiSachDAO {
     private final DbHelper dbhelper;
@@ -75,5 +76,22 @@ public class LoaiSachDAO {
         }
         return listLs;
     }
+    private List<LoaiSach> getData(String sql, String...selectionArgs) {
+        SQLiteDatabase db = dbhelper.getWritableDatabase();
+        List<LoaiSach> list = new ArrayList<LoaiSach>();
+        Cursor c =db.rawQuery(sql,selectionArgs);
+        while(c.moveToNext()){
+            LoaiSach obj = new LoaiSach();
+            obj.setMaLoai(Integer.parseInt(c.getString(0)));
+            obj.setTenLoai(c.getString(1));
 
+            list.add(obj);
+        }
+        return list;
+    }
+    public LoaiSach getID(String id){
+        String sql ="select * from LoaiSach where maLoai=?";
+        List<LoaiSach> list = getData(sql,id);
+        return list.get(0);
+    }
 }

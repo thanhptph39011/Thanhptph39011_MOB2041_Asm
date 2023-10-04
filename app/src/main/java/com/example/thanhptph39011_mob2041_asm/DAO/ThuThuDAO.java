@@ -11,6 +11,7 @@ import com.example.thanhptph39011_mob2041_asm.Model.LoaiSach;
 import com.example.thanhptph39011_mob2041_asm.Model.ThuThu;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ThuThuDAO {
     private final DbHelper dbHelper;
@@ -88,5 +89,23 @@ public class ThuThuDAO {
         Cursor cursor =db.rawQuery("Select * from ThuThu where maTT=?",new String[]{matKhau});
         int row = cursor.getCount();
         return (row>0);
+    }
+    private List<ThuThu> getData(String sql, String...selectionArgs) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        List<ThuThu> list = new ArrayList<ThuThu>();
+        Cursor c =db.rawQuery(sql,selectionArgs);
+        while(c.moveToNext()){
+            ThuThu obj = new ThuThu();
+            obj.setMaTT((c.getString(0)));
+            obj.setHoTen(c.getString(1));
+            obj.setMatKhau(c.getString(2));
+            list.add(obj);
+        }
+        return list;
+    }
+    public ThuThu getID(String id){
+        String sql ="select * from ThuThu where maTT=?";
+        List<ThuThu> list = getData(sql,id);
+        return list.get(0);
     }
 }

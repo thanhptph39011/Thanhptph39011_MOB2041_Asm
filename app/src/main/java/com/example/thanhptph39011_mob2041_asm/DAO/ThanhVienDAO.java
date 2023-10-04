@@ -11,6 +11,7 @@ import com.example.thanhptph39011_mob2041_asm.Model.Sach;
 import com.example.thanhptph39011_mob2041_asm.Model.ThanhVien;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ThanhVienDAO {
     private final DbHelper dbHelper;
@@ -41,41 +42,46 @@ public class ThanhVienDAO {
         }
         return listTv;
     }
+
     public boolean insertTv(ThanhVien tv) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-      values.put("hoTen",tv.getHoTen());
-      values.put("namSinh",tv.getNamSinh());
+        values.put("hoTen", tv.getHoTen());
+        values.put("namSinh", tv.getNamSinh());
         long row = db.insert("ThanhVien", null, values);
         return (row > 0);
     }
-public boolean updateTv(ThanhVien tv){
-    SQLiteDatabase db = dbHelper.getWritableDatabase();
-    ContentValues values = new ContentValues();
-    values.put("hoTen",tv.getHoTen());
-    values.put("namSinh",tv.getNamSinh());
-    long row = db.update("ThanhVien",values,"maTV=?",new String[]{String.valueOf(tv.getMaTV())});
-    return (row>0);
-}
-public boolean deleteTv(int maTV){
-    SQLiteDatabase db = dbHelper.getWritableDatabase();
-    long row = db.delete("ThanhVien", "maTV=?", new String[]{String.valueOf(maTV)});
-    return (row > 0);
-}
-    public int getID(String hoTen) {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
-        int maTV = -1; // Giá trị mặc định nếu không tìm thấy mã thành viên
 
-        try {
-            Cursor cursor = db.rawQuery("SELECT maTV FROM ThanhVien WHERE hoTen = ?", new String[]{hoTen});
-            if (cursor.moveToFirst()) {
-                maTV = cursor.getInt(0);
-            }
-            cursor.close();
-        } catch (Exception e) {
-            Log.e("ThanhVienDAO", "Lỗi khi lấy mã thành viên", e);
+    public boolean updateTv(ThanhVien tv) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("hoTen", tv.getHoTen());
+        values.put("namSinh", tv.getNamSinh());
+        long row = db.update("ThanhVien", values, "maTV=?", new String[]{String.valueOf(tv.getMaTV())});
+        return (row > 0);
+    }
+
+    public boolean deleteTv(int maTV) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        long row = db.delete("ThanhVien", "maTV=?", new String[]{String.valueOf(maTV)});
+        return (row > 0);
+    }
+    private List<ThanhVien> getData(String sql, String...selectionArgs) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        List<ThanhVien> list = new ArrayList<ThanhVien>();
+        Cursor c =db.rawQuery(sql,selectionArgs);
+        while(c.moveToNext()){
+            ThanhVien obj = new ThanhVien();
+            obj.setMaTV(c.getInt(0));
+            obj.setHoTen(c.getString(1));
+            obj.setNamSinh(c.getString(2));
+            list.add(obj);
         }
-
-        return maTV;
+        return list;
+    }
+    public ThanhVien getID(String id){
+        String sql ="select * from thanhvien where maTV=?";
+        List<ThanhVien> list = getData(sql,id);
+        return list.get(0);
     }
 }

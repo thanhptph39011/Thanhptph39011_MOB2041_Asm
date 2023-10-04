@@ -1,8 +1,8 @@
 package com.example.thanhptph39011_mob2041_asm.Model;
 
 public class Top {
-    private String maSach;
-    private int soLuong;
+     String maSach;
+    int soLuong;
 
     public Top() {
     }
