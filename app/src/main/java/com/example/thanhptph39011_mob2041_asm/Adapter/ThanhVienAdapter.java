@@ -2,12 +2,14 @@ package com.example.thanhptph39011_mob2041_asm.Adapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -73,6 +75,56 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
                 dialog.show();
             }
         });
+        holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+                View view = inflater.inflate(R.layout.item_update_thanhvien, null);
+                builder.setView(view);
+                Dialog dialog = builder.create();
+                dialog.show();
+                EditText edtMatv = view.findViewById(R.id.edtMaTV_itemUpThanhVien);
+                EditText edtTenTv = view.findViewById(R.id.edtTenTV_itemUpThanhVien);
+                EditText edtNamSinh = view.findViewById(R.id.edtNamSinh_itemUpThanhVien);
+                Button btnSave = view.findViewById(R.id.btnSave_itemUpThanhVien);
+                Button btnHuy = view.findViewById(R.id.btnHuy_itemUpThanhVien);
+                //gán dl
+                edtMatv.setText(String.valueOf(tv.getMaTV()));
+                edtTenTv.setText(tv.getHoTen());
+                edtNamSinh.setText(tv.getNamSinh());
+                btnSave.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String ten = edtTenTv.getText().toString();
+                        String tuoi = edtNamSinh.getText().toString();
+                        if (ten.isEmpty() || tuoi.isEmpty()) {
+                            Toast.makeText(context, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        tv.setHoTen(edtTenTv.getText().toString());
+                        tv.setNamSinh(edtNamSinh.getText().toString());
+                        if (thanhVienDAO.updateTv(tv)) {
+                            listTv.clear();
+                            listTv.addAll(thanhVienDAO.getAll());
+                            notifyDataSetChanged();
+                            dialog.dismiss();
+                            Toast.makeText(context, "Update Succ", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Update Fail", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                btnHuy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(context, "Huỷ Update", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+            }
+        });
+
     }
 
     @Override
@@ -82,7 +134,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
 
     public class viewholer extends RecyclerView.ViewHolder {
         TextView tvMaTV_itemThanhVien, tvHoTen_itemThanhVien, tvNamSinh_itemThanhVien;
-        Button btnDelete_ThanhVien;
+        Button btnDelete_ThanhVien, btnUpdate;
 
         public viewholer(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +142,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
             tvHoTen_itemThanhVien = itemView.findViewById(R.id.tvHoTen_itemThanhVien);
             tvNamSinh_itemThanhVien = itemView.findViewById(R.id.tvNamSinh_itemThanhVien);
             btnDelete_ThanhVien = itemView.findViewById(R.id.btnDelete_ThanhVien);
+            btnUpdate = itemView.findViewById(R.id.btnUpdate_ThanhVien);
         }
     }
 }

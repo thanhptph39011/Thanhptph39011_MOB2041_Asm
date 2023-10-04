@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.thanhptph39011_mob2041_asm.DataBase.DbHelper;
+import com.example.thanhptph39011_mob2041_asm.Model.Sach;
 import com.example.thanhptph39011_mob2041_asm.Model.ThanhVien;
 
 import java.util.ArrayList;
@@ -61,5 +62,20 @@ public boolean deleteTv(int maTV){
     long row = db.delete("ThanhVien", "maTV=?", new String[]{String.valueOf(maTV)});
     return (row > 0);
 }
+    public int getID(String hoTen) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        int maTV = -1; // Giá trị mặc định nếu không tìm thấy mã thành viên
 
+        try {
+            Cursor cursor = db.rawQuery("SELECT maTV FROM ThanhVien WHERE hoTen = ?", new String[]{hoTen});
+            if (cursor.moveToFirst()) {
+                maTV = cursor.getInt(0);
+            }
+            cursor.close();
+        } catch (Exception e) {
+            Log.e("ThanhVienDAO", "Lỗi khi lấy mã thành viên", e);
+        }
+
+        return maTV;
+    }
 }

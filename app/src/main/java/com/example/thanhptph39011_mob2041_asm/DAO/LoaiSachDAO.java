@@ -57,4 +57,23 @@ public class LoaiSachDAO {
         long row = db.delete("LoaiSach", "maLoai=?", new String[]{String.valueOf(maLoai)});
         return (row > 0);
     }
+    public ArrayList<String> getLoaiSach() {
+        ArrayList<String> listLs = new ArrayList<String>();
+        SQLiteDatabase db = dbhelper.getReadableDatabase();
+        try {
+            Cursor cursor = db.rawQuery("SELECT tenLoai FROM LoaiSach", null);
+            if (cursor.getCount() > 0) {
+                cursor.moveToFirst();
+                while (!cursor.isAfterLast()) {
+                   String loai = cursor.getString(0);
+                  listLs.add(loai);
+                    cursor.moveToNext();
+                }
+            }
+        } catch (Exception e) {
+            Log.e("zzzzzzzzzzzzzzzzzzzz", "Lỗiiiiii");
+        }
+        return listLs;
+    }
+
 }

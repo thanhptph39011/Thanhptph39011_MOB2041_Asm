@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#B5A9A9"
     tools:context=".LoginActivity">
 
     <ImageView
@@ -12,7 +13,7 @@
         android:layout_height="120dp"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:src="@drawable/thuvien" />
+        android:src="@drawable/imges" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

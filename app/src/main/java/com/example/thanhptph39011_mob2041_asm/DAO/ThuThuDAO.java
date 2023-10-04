@@ -66,4 +66,27 @@ public class ThuThuDAO {
         long row = db.delete("ThuThu", "maTT=?", new String[]{String.valueOf(maTT)});
         return (row > 0);
     }
+    public boolean checklogin(String username, String pass) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from ThuThu where maTT=? and matKhau=?", new String[]{username, pass});
+        int row = cursor.getCount();
+        return (row > 0);
+    }
+    public boolean updatePassword(ThuThu thuThu) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("matKhau", thuThu.getMatKhau());
+
+        long row = database.update("ThuThu", values, "maTT = ?",
+                new String[]{thuThu.getMaTT()});
+        return row != -1;
+    }
+    public boolean checkMk(String matKhau){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor =db.rawQuery("Select * from ThuThu where maTT=?",new String[]{matKhau});
+        int row = cursor.getCount();
+        return (row>0);
+    }
 }

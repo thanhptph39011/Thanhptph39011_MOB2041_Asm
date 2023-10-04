@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#A2D7EF"
     android:orientation="vertical">
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,16 +19,20 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
             android:hint="Mã sách"
             android:inputType="none"
             android:paddingLeft="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         app:hintEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -39,12 +44,13 @@
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         app:hintEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -56,14 +62,15 @@
             android:inputType="textEmailAddress"
             android:paddingLeft="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <Spinner
+        android:id="@+id/spLoaiSach_itemAddSach"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:id="@+id/spLoaiSach_itemAddSach"
-        />
+        android:layout_marginRight="20dp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,6 +85,7 @@
             android:layout_marginRight="100dp"
             android:drawableStart="@drawable/baseline_save_24"
             android:text="Lưu" />
+
         <Button
             android:id="@+id/btnHuy_itemAddSach"
             android:layout_width="wrap_content"

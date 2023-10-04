@@ -20,6 +20,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 "hoTen text not null," +
                 "matKhau text not null)";
         db.execSQL(createTableThuThu);
+        db.execSQL("insert into ThuThu values('admin','Phạm Tiến Thành','308204')");
         //bảng thành viên
         String createTableThanhVien = "create table ThanhVien(maTV integer primary key autoincrement," +
                 "hoTen text not null," +

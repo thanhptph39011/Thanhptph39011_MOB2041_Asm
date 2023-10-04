@@ -76,18 +76,18 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnSave_AddUser"
+            android:id="@+id/btnSave_ChangePass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginRight="100dp"
             android:drawableStart="@drawable/baseline_save_24"
             android:text="Lưu" />
         <Button
-            android:id="@+id/btnHuyLuu_AddUser"
+            android:id="@+id/btnHuy_ChangePass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableStart="@drawable/baseline_close_24"
-            android:text="Lưu" />
+            android:text="Huỷ" />
     </LinearLayout>
 </LinearLayout>
 

@@ -15,6 +15,7 @@ public class Sach {
         this.maLoai = maLoai;
     }
 
+
     public int getMaSach() {
         return maSach;
     }

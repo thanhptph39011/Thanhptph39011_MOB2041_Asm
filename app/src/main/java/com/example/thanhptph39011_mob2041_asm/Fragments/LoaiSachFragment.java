@@ -25,12 +25,11 @@ import java.util.ArrayList;
 
 
 public class LoaiSachFragment extends Fragment {
-RecyclerView rycLoaiSach;
-FloatingActionButton fltAddLoaiSach;
-LoaiSachDAO loaiSachDAO;
-LoaiSachAdapter adapter;
-private ArrayList<LoaiSach> listls = new ArrayList<LoaiSach>();
-
+    RecyclerView rycLoaiSach;
+    FloatingActionButton fltAddLoaiSach;
+    LoaiSachDAO loaiSachDAO;
+    LoaiSachAdapter adapter;
+    private ArrayList<LoaiSach> listls = new ArrayList<LoaiSach>();
 
 
     public LoaiSachFragment() {
@@ -42,15 +41,15 @@ private ArrayList<LoaiSach> listls = new ArrayList<LoaiSach>();
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_loai_sach, container, false);
-rycLoaiSach = view.findViewById(R.id.rycLoaiSach);
-fltAddLoaiSach = view.findViewById(R.id.fltAddLoaiSach);
-loaiSachDAO = new LoaiSachDAO(getActivity());
-listls = loaiSachDAO.getAll();
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.VERTICAL,false);
+        View view = inflater.inflate(R.layout.fragment_loai_sach, container, false);
+        rycLoaiSach = view.findViewById(R.id.rycLoaiSach);
+        fltAddLoaiSach = view.findViewById(R.id.fltAddLoaiSach);
+        loaiSachDAO = new LoaiSachDAO(getActivity());
+        listls = loaiSachDAO.getAll();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         rycLoaiSach.setLayoutManager(layoutManager);
-        adapter = new LoaiSachAdapter(getActivity(),listls);
-        rycLoaiSach.setAdapter(adapter );
+        adapter = new LoaiSachAdapter(getActivity(), listls);
+        rycLoaiSach.setAdapter(adapter);
         fltAddLoaiSach.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +58,8 @@ listls = loaiSachDAO.getAll();
         });
         return view;
     }
-    private void opendialogadd(){
+
+    private void opendialogadd() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.item_add_loaisach, null);
@@ -73,18 +73,18 @@ listls = loaiSachDAO.getAll();
             @Override
             public void onClick(View v) {
                 String tenLoai = edtTenLoai.getText().toString();
-                if(tenLoai.equals("")){
+                if (tenLoai.equals("")) {
                     Toast.makeText(getActivity(), "Nhập tên loại", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 LoaiSach ls = new LoaiSach(tenLoai);
-                if(loaiSachDAO.insertLoaiSach(ls)){
+                if (loaiSachDAO.insertLoaiSach(ls)) {
                     listls.clear();
                     listls.addAll(loaiSachDAO.getAll());
                     adapter.notifyDataSetChanged();
                     Toast.makeText(getActivity(), "Add Succ", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
-                }else{
+                } else {
                     Toast.makeText(getActivity(), "Add Fail", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -96,5 +96,6 @@ listls = loaiSachDAO.getAll();
                 dialog.dismiss();
             }
         });
+
     }
 }
