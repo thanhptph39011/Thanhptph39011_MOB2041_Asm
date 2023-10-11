@@ -1,15 +1,26 @@
 package com.example.thanhptph39011_mob2041_asm.Model;
 
+import java.util.Date;
+
 public class PhieuMuon {
-private int maPM;
-private String maTT;
-private int maTV;
-private int maSach;
-private int tienThue;
-private String Ngay;
-private int traSach;
+    private int maPM;
+    private String maTT;
+    private int maTV;
+    private int maSach;
+    private int tienThue;
+    private Date Ngay;
+    private int traSach;
 
     public PhieuMuon() {
+    }
+
+    public PhieuMuon(int maPM, int maTV, int maSach, int tienThue, Date ngay, int traSach) {
+        this.maPM = maPM;
+        this.maTV = maTV;
+        this.maSach = maSach;
+        this.tienThue = tienThue;
+        Ngay = ngay;
+        this.traSach = traSach;
     }
 
     public int getMaPM() {
@@ -52,11 +63,11 @@ private int traSach;
         this.tienThue = tienThue;
     }
 
-    public String getNgay() {
+    public Date getNgay() {
         return Ngay;
     }
 
-    public void setNgay(String ngay) {
+    public void setNgay(Date ngay) {
         Ngay = ngay;
     }
 
@@ -68,3 +79,4 @@ private int traSach;
         this.traSach = traSach;
     }
 }
+

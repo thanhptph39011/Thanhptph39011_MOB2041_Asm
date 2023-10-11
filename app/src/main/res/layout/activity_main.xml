@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="#20D3EA"
+    android:background="@drawable/libary"
     tools:context=".MainActivity">
     <ImageView
         android:layout_width="300dp"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="WellCome to Phương Nam Library !"
-        android:textColor="@color/white"
+        android:textColor="#EFF3F4"
         android:textSize="20dp"
         android:textStyle="bold" />
 

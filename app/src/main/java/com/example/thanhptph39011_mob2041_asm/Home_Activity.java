@@ -13,9 +13,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thanhptph39011_mob2041_asm.DAO.ThuThuDAO;
 import com.example.thanhptph39011_mob2041_asm.Fragments.AddUserFragment;
 import com.example.thanhptph39011_mob2041_asm.Fragments.ChangePassFragment;
 import com.example.thanhptph39011_mob2041_asm.Fragments.DoanhThuFragment;
@@ -24,12 +27,15 @@ import com.example.thanhptph39011_mob2041_asm.Fragments.PhieuMuonFragment;
 import com.example.thanhptph39011_mob2041_asm.Fragments.SachFragment;
 import com.example.thanhptph39011_mob2041_asm.Fragments.ThanhVienFragment;
 import com.example.thanhptph39011_mob2041_asm.Fragments.Top10Fragment;
+import com.example.thanhptph39011_mob2041_asm.Model.ThuThu;
 import com.google.android.material.navigation.NavigationView;
 
 public class Home_Activity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView nav;
+    View view;
+    ThuThuDAO thuThuDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +44,25 @@ public class Home_Activity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
         nav = findViewById(R.id.nav);
+        view= nav.getHeaderView(0);
+        TextView tvWelcome = view.findViewById(R.id.tvWellcome);
         setSupportActionBar(toolbar);// gán toolbar
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
         nav.setItemIconTintList(null);
+        Intent intent = getIntent();
+        String user = intent.getStringExtra("user");
+        if(user.equalsIgnoreCase("admin")){
+            nav.getMenu().findItem(R.id.ThemNguoiDung).setVisible(true);
+            Toast.makeText(this, "Wellcome Admin", Toast.LENGTH_SHORT).show();
+        }else{
+          thuThuDAO = new ThuThuDAO(this);
+            ThuThu tt = thuThuDAO.getID(user);
+            String userName = tt.getHoTen();
+            tvWelcome.setText("Wellcome: "+userName);
+            Toast.makeText(this, "Wellcome thủ thư", Toast.LENGTH_SHORT).show();
+        }
         nav.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

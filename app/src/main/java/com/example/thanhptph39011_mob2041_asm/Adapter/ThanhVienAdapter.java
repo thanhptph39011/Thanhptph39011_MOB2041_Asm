@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -134,7 +135,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.view
 
     public class viewholer extends RecyclerView.ViewHolder {
         TextView tvMaTV_itemThanhVien, tvHoTen_itemThanhVien, tvNamSinh_itemThanhVien;
-        Button btnDelete_ThanhVien, btnUpdate;
+        ImageView btnDelete_ThanhVien, btnUpdate;
 
         public viewholer(@NonNull View itemView) {
             super(itemView);

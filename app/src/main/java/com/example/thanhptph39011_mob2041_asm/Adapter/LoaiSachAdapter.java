@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -78,7 +79,7 @@ public class LoaiSachAdapter extends RecyclerView.Adapter<LoaiSachAdapter.viewho
         holder.btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-openDiaLogUpdate(ls);
+                openDiaLogUpdate(ls);
             }
         });
     }
@@ -90,7 +91,7 @@ openDiaLogUpdate(ls);
 
     public class viewholer extends RecyclerView.ViewHolder {
         TextView maLoai, tenLoai;
-        Button btnDelete,btnUpdate;
+        ImageView btnDelete, btnUpdate;
 
         public viewholer(@NonNull View itemView) {
             super(itemView);
@@ -100,7 +101,8 @@ openDiaLogUpdate(ls);
             btnDelete = itemView.findViewById(R.id.btnDelete_LoaiSach);
         }
     }
-    public void openDiaLogUpdate(LoaiSach ls){
+
+    public void openDiaLogUpdate(LoaiSach ls) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 //
         LayoutInflater inflater = ((Activity) context).getLayoutInflater();
@@ -108,39 +110,39 @@ openDiaLogUpdate(ls);
         builder.setView(view);//gán view vào hôp thoại
         Dialog dialog = builder.create();//tạo hộp thoại
         dialog.show();
-        EditText maLoai =view.findViewById(R.id.edtMaLS_itemUpLoaiSach);
+        EditText maLoai = view.findViewById(R.id.edtMaLS_itemUpLoaiSach);
         EditText tenLoai = view.findViewById(R.id.edtTenLoai_itemUpLoaiSach);
-     Button btnSave = view.findViewById(R.id.btnSave_itemUpLoaiSach);
-     Button btnHuy = view.findViewById(R.id.btnHuy_itemUpLoaiSach);
+        Button btnSave = view.findViewById(R.id.btnSave_itemUpLoaiSach);
+        Button btnHuy = view.findViewById(R.id.btnHuy_itemUpLoaiSach);
 //gán dl
         maLoai.setText(String.valueOf(ls.getMaLoai()));
         tenLoai.setText(ls.getTenLoai());
-btnSave.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-String ten = tenLoai.getText().toString();
-if(ten.equals("")){
-    Toast.makeText(context, "Nhập tên loại", Toast.LENGTH_SHORT).show();
-    return;
-}
-ls.setTenLoai(tenLoai.getText().toString());
-if(loaiSachDAO.updateLoaiSach(ls)){
-listls.clear();
-listls.addAll(loaiSachDAO.getAll());
-notifyDataSetChanged();
-dialog.dismiss();
-    Toast.makeText(context, "Update Succ", Toast.LENGTH_SHORT).show();
-}else{
-    Toast.makeText(context, "Update Fail", Toast.LENGTH_SHORT).show();
-}
-    }
-});
-btnHuy.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(context, "Huỷ Update", Toast.LENGTH_SHORT).show();
-        dialog.dismiss();
-    }
-});
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ten = tenLoai.getText().toString();
+                if (ten.equals("")) {
+                    Toast.makeText(context, "Nhập tên loại", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                ls.setTenLoai(tenLoai.getText().toString());
+                if (loaiSachDAO.updateLoaiSach(ls)) {
+                    listls.clear();
+                    listls.addAll(loaiSachDAO.getAll());
+                    notifyDataSetChanged();
+                    dialog.dismiss();
+                    Toast.makeText(context, "Update Succ", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(context, "Update Fail", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context, "Huỷ Update", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
     }
 }

@@ -11,6 +11,7 @@ import com.example.thanhptph39011_mob2041_asm.Model.LoaiSach;
 import com.example.thanhptph39011_mob2041_asm.Model.PhieuMuon;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class PhieuMuonDAO {
@@ -34,7 +35,7 @@ public class PhieuMuonDAO {
                     phieuMuon.setMaTV(cursor.getInt(2));
                     phieuMuon.setMaSach(cursor.getInt(3));
                     phieuMuon.setTienThue(cursor.getInt(4));
-                    phieuMuon.setNgay(cursor.getString(5));
+                    phieuMuon.setNgay(new Date(cursor.getLong(5)));
                     phieuMuon.setTraSach(cursor.getInt(6));
                     listPm.add(phieuMuon);
                     cursor.moveToNext();
@@ -49,26 +50,22 @@ public class PhieuMuonDAO {
     public boolean insertPhieuMuon(PhieuMuon pm) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("maPM",pm.getMaPM());
-        values.put("maTT",pm.getMaTT());
         values.put("maTV",pm.getMaTV());
         values.put("maSach",pm.getMaSach());
-        values.put("ngay",pm.getNgay());
+        values.put("ngay",pm.getNgay().getTime());
         values.put("traSach",pm.getTraSach());
         values.put("tienThue",pm.getTienThue());
 
-        long row = db.insert("LoaiSach", null, values);
+        long row = db.insert("PhieuMuon", null, values);
         return (row > 0);
     }
 
     public boolean updatePhieuMuon(PhieuMuon pm) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("maPM",pm.getMaPM());
-        values.put("maTT",pm.getMaTT());
         values.put("maTV",pm.getMaTV());
         values.put("maSach",pm.getMaSach());
-        values.put("ngay",pm.getNgay());
+        values.put("ngay",pm.getNgay().getTime());
         values.put("traSach",pm.getTraSach());
         values.put("tienThue",pm.getTienThue());
         long row = db.update("PhieuMuon", values, "maPM=?", new String[]{String.valueOf(pm.getMaPM())});
@@ -91,7 +88,7 @@ public class PhieuMuonDAO {
             obj.setMaTT(c.getString(1));
             obj.setMaTV(c.getInt(2));
             obj.setMaSach(c.getInt(3));
-            obj.setNgay(c.getString(4));
+            obj.setNgay(new Date(c.getLong(4)));
             obj.setTraSach(Integer.parseInt(c.getString(5)));
             obj.setTienThue(Integer.parseInt(c.getString(6)));
             list.add(obj);

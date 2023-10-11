@@ -8,6 +8,12 @@ public class Sach {
     public Sach() {
     }
 
+    public Sach(String tenSach, int giaThue) {
+        this.tenSach = tenSach;
+        this.giaThue = giaThue;
+
+    }
+
     public Sach(int maSach, String tenSach, int giaThue, int maLoai) {
         this.maSach = maSach;
         this.tenSach = tenSach;
@@ -15,6 +21,11 @@ public class Sach {
         this.maLoai = maLoai;
     }
 
+    public Sach(String tenSach, int giaThue, int maLoai) {
+        this.tenSach = tenSach;
+        this.giaThue = giaThue;
+        this.maLoai = maLoai;
+    }
 
     public int getMaSach() {
         return maSach;

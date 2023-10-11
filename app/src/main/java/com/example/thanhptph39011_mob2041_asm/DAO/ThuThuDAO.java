@@ -67,11 +67,12 @@ public class ThuThuDAO {
         long row = db.delete("ThuThu", "maTT=?", new String[]{String.valueOf(maTT)});
         return (row > 0);
     }
-    public boolean checklogin(String username, String pass) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select * from ThuThu where maTT=? and matKhau=?", new String[]{username, pass});
-        int row = cursor.getCount();
-        return (row > 0);
+    public int CheckLogin(String id,String password){
+        String sql = "select * from thuthu where maTT=? and matKhau=?";
+        List<ThuThu> list=getData(sql,id,password);
+        if (list.size()==0){
+            return -1;
+        }return 1;
     }
     public boolean updatePassword(ThuThu thuThu) {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
@@ -108,4 +109,5 @@ public class ThuThuDAO {
         List<ThuThu> list = getData(sql,id);
         return list.get(0);
     }
+
 }

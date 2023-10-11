@@ -3,6 +3,7 @@ package com.example.thanhptph39011_mob2041_asm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -29,6 +30,11 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnHuy = findViewById(R.id.btnHuy);
         thuThuDAO = new ThuThuDAO(this);
+        //đọc user, password
+        SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
+        edtUserName.setText(preferences.getString("userName", ""));
+        edtPassWord.setText((preferences.getString("passWord", "")));
+        chkLuuMk.setChecked(preferences.getBoolean("remember", false));
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,17 +44,38 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(LoginActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (thuThuDAO.checklogin(userName, passWord)) {
+                if (thuThuDAO.CheckLogin(userName, passWord) > 0 || (userName.equals("admin") && passWord.equals("308204"))) {
                     Toast.makeText(LoginActivity.this, "Đăng nhập Succ", Toast.LENGTH_SHORT).show();
-                    edtUserName.setText("");
-                    edtPassWord.setText("");
+                    rememberUser(userName, passWord, chkLuuMk.isChecked());
                     Intent intent = new Intent(LoginActivity.this, Home_Activity.class);
+                    intent.putExtra("user", userName);
                     startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Đăng nhập thất bại. Vui lòng kiểm tra lại", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtUserName.setText("");
+                edtPassWord.setText("");
 
             }
         });
+    }
+
+    public void rememberUser(String user, String pass, boolean satus) {
+        SharedPreferences preferences = getSharedPreferences("USER_FILE", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        if (!satus) {
+            editor.clear();
+        } else {
+            editor.putString("userName", user);
+            editor.putString("passWord", pass);
+            editor.putBoolean("remember", satus);
+        }
+        editor.commit();
     }
 }

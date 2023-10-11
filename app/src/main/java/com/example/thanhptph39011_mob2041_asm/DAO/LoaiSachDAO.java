@@ -92,6 +92,11 @@ public class LoaiSachDAO {
     public LoaiSach getID(String id){
         String sql ="select * from LoaiSach where maLoai=?";
         List<LoaiSach> list = getData(sql,id);
-        return list.get(0);
+        if(!list.isEmpty()){
+            return list.get(0);
+        }else{
+            return null;
+        }
+
     }
 }

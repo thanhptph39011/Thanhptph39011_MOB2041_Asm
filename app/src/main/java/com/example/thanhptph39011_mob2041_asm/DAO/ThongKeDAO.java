@@ -24,12 +24,12 @@ public class ThongKeDAO {
     }
     @SuppressLint("Range")
     public List<Top> getTop(){
-        String  sqlTop = "Select maSach,count(maSach) as soLuong From PhieuMuon group by maSach oder by soLuong Desc Limit 10";
+        String  sqlTop = "Select maSach,count(maSach) as soLuong From PhieuMuon group by maSach order by soLuong Desc Limit 10";
         List<Top> list = new ArrayList<Top>();
         SachDAO sachDao = new SachDAO(context);
         Cursor c = db.rawQuery(sqlTop,null);
         while (c.moveToNext()){
-            Sach obj = new Sach();
+//            Sach obj = new Sach();
             Top top = new Top();
             Sach sach = sachDao.getID(c.getString(c.getColumnIndex("maSach")));
            top.setMaSach((sach.getTenSach()));

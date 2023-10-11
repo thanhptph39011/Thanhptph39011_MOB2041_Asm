@@ -12,6 +12,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
+        android:enabled="false"
         app:hintEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -40,24 +41,13 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <TextView
+        android:id="@+id/edtDate_itemAddPM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtDate_itemAddPM"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:focusable="false"
-            android:hint="Ngày bắt đầu"
-            android:inputType="none"
-            android:paddingLeft="20dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:text="Ngày thuê:" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -86,6 +76,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
         android:text="Đã trả sách" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,9 +88,10 @@
             android:id="@+id/btnSave_itemAddPM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="100dp"
+            android:layout_marginRight="30dp"
             android:drawableStart="@drawable/baseline_save_24"
             android:text="Lưu" />
+
         <Button
             android:id="@+id/btnHuy_itemAddPM"
             android:layout_width="wrap_content"

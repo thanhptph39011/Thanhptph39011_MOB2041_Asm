@@ -6,7 +6,7 @@
     android:orientation="horizontal">
 
   <LinearLayout
-      android:layout_width="340dp"
+      android:layout_width="320dp"
       android:layout_height="wrap_content"
       android:orientation="vertical">
       <LinearLayout
@@ -135,20 +135,12 @@
        android:layout_height="wrap_content"
        android:layout_marginTop="30dp"
        android:orientation="vertical">
-       <Button
+       <ImageView
            android:id="@+id/btnDeletePhieuMuon"
            android:layout_width="28dp"
            android:layout_height="30dp"
-           android:layout_marginLeft="20dp"
-           android:background="#00BCD4"
-           android:drawableStart="@drawable/baseline_delete_24" />
-       <Button
-           android:id="@+id/btnUpdate_PhieuMuon"
-           android:layout_width="28dp"
-           android:layout_height="30dp"
-           android:layout_marginLeft="20dp"
-           android:layout_marginTop="10dp"
-           android:background="#00BCD4"
-           android:drawableStart="@drawable/baseline_auto_fix_normal_24" />
+           android:src="@drawable/delete"
+         />
+
    </LinearLayout>
 </LinearLayout>

@@ -49,20 +49,20 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:orientation="horizontal">
-      <Button
+      <ImageView
           android:id="@+id/btnDelete_LoaiSach"
           android:layout_width="28dp"
           android:layout_height="30dp"
           android:layout_marginTop="10dp"
-          android:background="#00BCD4"
-          android:drawableStart="@drawable/baseline_delete_24" />
-      <Button
+          android:src="@drawable/delete"
+        />
+      <ImageView
           android:id="@+id/btnUpdate_LoaiSach"
           android:layout_width="28dp"
           android:layout_height="30dp"
           android:layout_marginLeft="5dp"
           android:layout_marginTop="10dp"
-          android:background="#00BCD4"
-          android:drawableStart="@drawable/baseline_auto_fix_normal_24" />
+          android:src="@drawable/upadte"
+         />
   </LinearLayout>
 </LinearLayout>
