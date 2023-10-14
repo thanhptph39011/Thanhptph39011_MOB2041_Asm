@@ -88,7 +88,7 @@
             android:id="@+id/btnSave_itemAddPM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="120dp"
             android:drawableStart="@drawable/baseline_save_24"
             android:text="Lưu" />
 

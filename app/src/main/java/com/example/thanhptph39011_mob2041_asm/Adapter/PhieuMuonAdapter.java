@@ -63,11 +63,22 @@ public class PhieuMuonAdapter extends ArrayAdapter<PhieuMuon> {
             tvMaPm.setText(item.getMaPM() + "");
             sachDAO = new SachDAO(context);
             Sach sach = sachDAO.getID(String.valueOf(item.getMaSach()));
-            tvTenSach.setText(sach.getTenSach());
+            if(item!=null){
+                tvTenSach.setText(sach.getTenSach());
+            }else{
+                tvTenSach.setText("Không xác định");
+            }
+
             thanhVienDAO = new ThanhVienDAO(context);
             ThanhVien thanhVien = thanhVienDAO.getID(String.valueOf(item.getMaTV()));
-            tvTenTv.setText(thanhVien.getHoTen());
+            if(item!=null){
+                tvTenTv.setText(thanhVien.getHoTen());
+            }else{
+                tvTenTv.setText("Không xác định");
+            }
+
             tvTienThue.setText(item.getTienThue() + "");
+
             try {
                 tvNgay.setText(sfd.format(item.getNgay()));
             }catch (Exception e){

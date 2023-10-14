@@ -126,6 +126,11 @@ public class PhieuMuonFragment extends Fragment {
         listTv = (ArrayList<ThanhVien>) thanhVienDAO.getAll();
         spinnerAdapter = new ThanhVienSpinnerAdapter(context, listTv);
         spTv.setAdapter(spinnerAdapter);
+        if(listTv.isEmpty()){
+            Toast.makeText(context, "Vui lòng thêm thành viên trước", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+            return;
+        }
         //laays mã tv
         spTv.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -144,6 +149,11 @@ public class PhieuMuonFragment extends Fragment {
         listSach = (ArrayList<Sach>) sachDAO.GetAll();
         sachSpinerAdapter = new SachSpinerAdapter(context, listSach);
         spTenSach.setAdapter(sachSpinerAdapter);
+        if(listSach.isEmpty()){
+            Toast.makeText(context, "Vui lòng thêm sách trước", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+            return;
+        }
         //lấy mã loại
         spTenSach.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

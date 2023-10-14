@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:background="@drawable/libary"
+    android:background="@drawable/tv"
     tools:context=".MainActivity">
     <ImageView
         android:layout_width="300dp"
         android:layout_height="150dp"
-        android:layout_marginTop="50dp"
-        android:src="@drawable/anhcv" />
+        android:layout_marginTop="150dp"
+        android:src="@drawable/docsach" />
 
     <TextView
         android:layout_width="wrap_content"

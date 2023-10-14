@@ -100,6 +100,12 @@ public class SachFragment extends Fragment {
         listls = (ArrayList<LoaiSach>) loaiSachDAO.getAll();
         spinerAdapter = new LoaiSachSpinerAdapter(context, listls);
         spinner.setAdapter(spinerAdapter);
+        //
+        if(listls.isEmpty()){
+            Toast.makeText(context, "Vui lòng thêm loại sách trước", Toast.LENGTH_SHORT).show();
+            dialog.dismiss();
+            return;
+        }
 //lấy mã loại sách
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

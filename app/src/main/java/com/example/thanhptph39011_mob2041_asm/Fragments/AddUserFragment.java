@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.thanhptph39011_mob2041_asm.DAO.ThuThuDAO;
 import com.example.thanhptph39011_mob2041_asm.Home_Activity;
+import com.example.thanhptph39011_mob2041_asm.LoginActivity;
 import com.example.thanhptph39011_mob2041_asm.Model.ThuThu;
 import com.example.thanhptph39011_mob2041_asm.R;
 
@@ -66,7 +67,7 @@ public class AddUserFragment extends Fragment {
                     hoTen.setText("");
                     matKhau.setText("");
                     nhapLaiMk.setText("");
-                    Intent intent = new Intent(getActivity(), Home_Activity.class);
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
 
                 } else {
