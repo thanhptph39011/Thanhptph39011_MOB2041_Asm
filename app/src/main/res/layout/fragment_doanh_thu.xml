@@ -10,17 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnStartDate"
-            android:text="StartDate"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/btnStartDate"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="StartDate" />-->
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
             android:layout_marginRight="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -54,38 +55,42 @@
                 android:inputType="none"
                 android:paddingLeft="20dp" />
         </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <Button-->
+<!--            android:id="@+id/btnEndDate"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="EndDate" />-->
+
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnEndDate"
-            android:text="EndDate"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="Doanh Thu"
             android:id="@+id/btnDoanhThu"
-            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:background="#00BCD4"/>
+            android:layout_marginTop="15dp"
+            android:background="#00BCD4"
+            android:text="Doanh Thu"
+            android:textColor="@color/white" />
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="20dp"
-                android:text="Doanh thu: " />
+                android:text="Doanh thu: "
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/tvDoanhThu_Fragment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
                 android:textSize="20dp"
-                android:layout_marginLeft="5dp" />
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 </FrameLayout>

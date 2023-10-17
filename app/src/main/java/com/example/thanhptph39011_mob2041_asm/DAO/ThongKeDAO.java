@@ -29,7 +29,6 @@ public class ThongKeDAO {
         SachDAO sachDao = new SachDAO(context);
         Cursor c = db.rawQuery(sqlTop,null);
         while (c.moveToNext()){
-//            Sach obj = new Sach();
             Top top = new Top();
             Sach sach = sachDao.getID(c.getString(c.getColumnIndex("maSach")));
            top.setMaSach((sach.getTenSach()));
@@ -38,21 +37,36 @@ public class ThongKeDAO {
         }
         return list;
     }
-    @SuppressLint("Range")
-    public int getDoanhThu(String tuNgay, String denNgay){
-        String sqlDoanhThu = "Select Sum(tienThue) as doanhThu From PhieuMuon Where ngay between ? and ?";
-        List<Integer> list = new ArrayList<>();
-        Cursor c = db.rawQuery(sqlDoanhThu,new String[]{tuNgay,denNgay});
-        while(c.moveToNext()){
-            try {
-                list.add(Integer.parseInt(c.getString(c.getColumnIndex("doanhThu"))));
-            }catch (Exception e){
-                list.add(0);
-            }
+//    @SuppressLint("Range")
+//    public int getDoanhThu(String tuNgay, String denNgay){
+//        String sqlDoanhThu = "SELECT SUM(tienThue) as doanhThu FROM PhieuMuon WHERE ngay BETWEEN ? AND ?";
+//        List<Integer> list = new ArrayList<>();
+//        Cursor c = db.rawQuery(sqlDoanhThu,new String[]{tuNgay,denNgay});
+//        while(c.moveToNext()){
+//            try {
+//                list.add(Integer.parseInt(c.getString(c.getColumnIndex("doanhThu"))));
+//            }catch (Exception e){
+//                list.add(0);
+//            }
+//        }
+//        return list.get(0);
+//
+//    }
+@SuppressLint("Range")
+public int getDoanhThu(String tuNgay, String denNgay){
+    String sqlDoanhThu = "Select Sum(tienThue) as doanhThu From PhieuMuon Where ngay between ? and ?";
+    List<Integer> list = new ArrayList<>();
+    Cursor c = db.rawQuery(sqlDoanhThu,new String[]{tuNgay,denNgay});
+    while(c.moveToNext()){
+        try {
+            list.add(Integer.parseInt(c.getString(c.getColumnIndex("doanhThu"))));
+        }catch (Exception e){
+            list.add(0);
         }
-        return list.get(0);
-
     }
+    return list.get(0);
+
+}
 
 
 }

@@ -46,7 +46,6 @@ public class DbHelper extends SQLiteOpenHelper {
                 "traSach integer not null)";
         db.execSQL(createTablePhieuMuon);
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String dropTableLoaiThuThu = "drop table if exists ThuThu";
